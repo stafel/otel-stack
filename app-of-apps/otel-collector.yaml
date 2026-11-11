@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: oci://ghcr.io/open-telemetry/opentelemetry-helm-charts
+    repoURL: https://ghcr.io/open-telemetry/opentelemetry-helm-charts
     chart: opentelemetry-collector
     targetRevision: "0.178.1"
     #values: |
