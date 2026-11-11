@@ -1,0 +1,25 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: otelo11y-otel-collector
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: oci://ghcr.io/open-telemetry/opentelemetry-helm-charts
+    releaseName: opentelemetry-collector
+    targetRevision: ~0.178.1
+    #values: |
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: otelo11y-otel-collector
+  
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

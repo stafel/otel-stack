@@ -1,0 +1,24 @@
+---
+# https://kubespec.dev/argo-cd/argoproj.io/v1alpha1/Application
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: o11y-app-of-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/stafel/otel-stack
+    path: app-of-apps
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: o11y-app-of-apps
+  
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
