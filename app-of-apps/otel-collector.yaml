@@ -10,7 +10,12 @@ spec:
     repoURL: ghcr.io/open-telemetry/opentelemetry-helm-charts
     chart: opentelemetry-collector
     targetRevision: "0.178.1"
-    #values: |
+    # https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-collector 
+    values: |
+      mode: deployment
+      replicaCount: 2
+      image:
+        repository: "ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s"
 
   destination:
     server: https://kubernetes.default.svc
