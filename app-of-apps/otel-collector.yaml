@@ -17,6 +17,8 @@ spec:
         replicaCount: 2
         image:
           repository: "ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s"
+        readinessProbe:
+          initialDelaySeconds: 3 # default 1 sec is too low
 
   destination:
     server: https://kubernetes.default.svc
