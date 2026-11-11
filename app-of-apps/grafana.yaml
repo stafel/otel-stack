@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: otelo11y-grafana
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: ghcr.io/grafana-community/helm-charts
+    chart: grafana
+    targetRevision: "14.4.0"
+    helm:
+      # https://artifacthub.io/packages/helm/grafana-community/grafana
+      values: |
+        admin:
+          existingSecret: "admin"
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: otelo11y-grafana
+
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
