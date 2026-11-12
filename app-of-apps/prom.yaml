@@ -17,7 +17,16 @@ spec:
           create: false # dont create cluster namespaced stuff
         server:
           nodeSelector:
-            kubernetes.io/arch: amd64
+            kubernetes.io/arch: amd64 # prometheus does not work on arm64?
+
+        scrapeConfigs: # what we scrape directly
+          prometheus:
+            enabled: true
+            job_name: ""
+            static_configs:
+              - targets:
+                  - localhost:9090
+
         alertmanager:
           enabled: false
         prometheus-pushgateway:
