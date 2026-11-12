@@ -17,6 +17,12 @@ spec:
           existingSecret: "admin"
         rbac:
           create: false # dont create cluster role
+        ingress:
+          enabled: true
+          ingressClassName: traefik # we are using traefik https://doc.traefik.io/traefik-enterprise/providers/kubernetes-ingress/
+          hosts: # enter your host here
+            - o11y.maus.home.arpa
+          # tls: [] # secretName and hosts could be entered here
 
   destination:
     server: https://kubernetes.default.svc
