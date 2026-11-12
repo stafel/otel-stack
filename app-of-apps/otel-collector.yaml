@@ -27,7 +27,7 @@ spec:
               verbosity: detailed
 
             otlp_http/tempo:
-              endpoint: "otelo11y-tempo.otelo11y-tempo.kubernetes.default.svc"
+              endpoint: "otelo11y-tempo.otelo11y-tempo.svc.cluster.local"
 
           extensions:
             # The health_check extension is mandatory for this chart.
