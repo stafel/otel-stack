@@ -24,15 +24,14 @@ spec:
             - o11y.maus.home.arpa
           # tls: [] # secretName and hosts could be entered here
         
-        datasources: # https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources
-          datasources.yaml:
-            apiVersion: 1
-            datasources
-              - name: tempo
-                type: tempo
-                uid: tempo
-                access: proxy
-                url: "http://otelo11y-tempo.otelo11y-tempo.kubernetes.default.svc:3200"
+        datasources: | # https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources
+          apiVersion: 1
+          datasources
+            - name: tempo
+              type: tempo
+              uid: tempo
+              access: proxy
+              url: "http://otelo11y-tempo.otelo11y-tempo.kubernetes.default.svc:3200"
 
         alerting: {} # https://grafana.com/docs/grafana/latest/alerting/set-up/provision-alerting-resources/file-provisioning/
 
