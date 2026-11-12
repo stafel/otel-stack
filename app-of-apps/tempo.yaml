@@ -14,9 +14,9 @@ spec:
       # https://artifacthub.io/packages/helm/grafana-community/tempo
       # values: |
         
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: otelo11y-tempo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: otelo11y-tempo
 
   syncPolicy:
     automated:
