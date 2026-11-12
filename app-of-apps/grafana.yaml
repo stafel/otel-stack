@@ -23,6 +23,12 @@ spec:
           hosts: # enter your host here
             - o11y.maus.home.arpa
           # tls: [] # secretName and hosts could be entered here
+        
+        datasources: {} # https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources
+
+        alerting: {} # https://grafana.com/docs/grafana/latest/alerting/set-up/provision-alerting-resources/file-provisioning/
+
+        notifiers: {} # https://grafana.com/docs/grafana/latest/administration/provisioning/#alerting
 
   destination:
     server: https://kubernetes.default.svc
