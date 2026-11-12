@@ -18,6 +18,14 @@ spec:
         server:
           nodeSelector:
             kubernetes.io/arch: amd64
+        alertmanager:
+          enabled: false
+        prometheus-pushgateway:
+          enabled: false
+        kube-state-metrics:
+          enabled: false
+        networkPolicy:
+          enabled: false
 
   destination:
     server: https://kubernetes.default.svc
