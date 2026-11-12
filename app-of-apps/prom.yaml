@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: otelo11y-prometheus
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: ghcr.io/prometheus-community/charts
+    chart: prometheus
+    targetRevision: "29.45.1"
+    helm:
+      # https://artifacthub.io/packages/helm/prometheus-community/prometheus
+      values: |
+        rbac:
+          create: false # dont create cluster namespaced stuff
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: otelo11y-prometheus
+  
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

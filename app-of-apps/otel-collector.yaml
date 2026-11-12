@@ -29,6 +29,9 @@ spec:
             otlp_http/tempo:
               endpoint: "otelo11y-tempo.otelo11y-tempo.svc.cluster.local"
 
+            prometheusremotewrite:
+              endpoint: "http://prometheus.otelo11y-prometheus.svc.cluster.local:9090/api/v1/write"
+
           extensions:
             # The health_check extension is mandatory for this chart.
             # Without the health_check extension the collector will fail the readiness and liveness probes.
