@@ -10,11 +10,13 @@ kubectl apply -f app_of_apps.yaml
 
 ### OTEL Collector
 
-Check if the otel collector works by port-forwarding the otlp/http port and curl it.
+Check if the otel collector works by port-forwarding the otlp/http port.
 
 ```bash
 kubectl port-forward -n otelo11y-otel-collector svc/otelo11y-otel-collector-opentelemetry-collector 4318:4318
 ```
+
+Then send data via curl to it.
 
 ```bash
 curl -X POST \
@@ -22,6 +24,8 @@ curl -X POST \
 -d '{"resourceLogs":[{"resource":{"attributes":[{"key":"service.name","value":{"stringValue":"curl-test"}}]},"scopeLogs":[{"logRecords":[{"timeUnixNano":"1762900000000000000","severityText":"INFO","body":{"stringValue":"hello from curl"}}]}]}]}' \
 localhost:4318/v1/logs
 ```
+
+It should say "partialSuccess" and the received log line should show up in the otel collector log.
 
 ### Grafana
 
