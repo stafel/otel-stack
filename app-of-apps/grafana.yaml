@@ -27,7 +27,7 @@ spec:
         datasources: # https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources
           datasources.yaml:
             apiVersion: 1
-            datasources
+            datasources:
               - name: tempo
                 type: tempo
                 uid: tempo
