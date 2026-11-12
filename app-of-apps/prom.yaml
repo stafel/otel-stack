@@ -19,13 +19,27 @@ spec:
           nodeSelector:
             kubernetes.io/arch: amd64 # prometheus does not work on arm64?
 
-        scrapeConfigs: # what we scrape directly
+        scrapeConfigs: # what we scrape directly, https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
           prometheus:
             enabled: true
-            job_name: ""
-            static_configs:
-              - targets:
-                  - localhost:9090
+          kubernetes-api-servers:
+            enabled: false
+          kubernetes-nodes:
+            enabled: false
+          kubernetes-nodes-cadvisor:
+            enabled: false
+          kubernetes-service-endpoints:
+            enabled: false
+          kubernetes-service-endpoints-slow:
+            enabled: false
+          prometheus-pushgateway:
+            enabled: false
+          kubernetes-services:
+            enabled: false
+          kubernetes-pods:
+            enabled: false
+          kubernetes-pods-slow:
+            enabled: false
 
         alertmanager:
           enabled: false
