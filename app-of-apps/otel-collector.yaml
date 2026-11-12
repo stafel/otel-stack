@@ -14,7 +14,7 @@ spec:
       # https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-collector 
       values: |
         mode: deployment
-        replicaCount: 2
+        replicaCount: 1 # Put replicas down to have easy way to check the log in argo
         image:
           repository: "ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s"
         readinessProbe:
