@@ -21,7 +21,7 @@ spec:
           initialDelaySeconds: 3 # default 1 sec is too low
 
         config: # https://opentelemetry.io/docs/collector/configuration/#basics
-          
+
           exporters:
             debug:
               verbosity: detailed
@@ -30,7 +30,7 @@ spec:
               endpoint: "otelo11y-tempo.otelo11y-tempo.svc.cluster.local"
 
             prometheusremotewrite:
-              endpoint: "http://prometheus.otelo11y-prometheus.svc.cluster.local:9090/api/v1/write"
+              endpoint: "http://otelo11y-prometheus-server.otelo11y-prometheus.svc.cluster.local/api/v1/write"
 
           extensions:
             # The health_check extension is mandatory for this chart.
@@ -62,6 +62,17 @@ spec:
             extensions:
               - health_check
 
+            telemetry:
+              metrics:
+                level: normal          # none | basic | normal | detailed
+                readers:
+                  - periodic: # this sets the own metrics to push
+                      interval: 60000ms   # push every 60s
+                      exporter:
+                        otlp:
+                          protocol: http/protobuf
+                          endpoint: http://otelo11y-prometheus-server.otelo11y-prometheus.svc.cluster.local/api/v1/otlp/v1/metrics
+
             pipelines:
               logs:
                 receivers:
@@ -80,6 +91,7 @@ spec:
                   - batch
                 exporters:
                   - debug
+                  - prometheusremotewrite
 
               traces:
                 receivers:
