@@ -16,6 +16,8 @@ spec:
         rbac:
           create: false # dont create cluster namespaced stuff
         server:
+          command:
+            - --web.enable-otlp-receiver
           nodeSelector:
             kubernetes.io/arch: amd64 # prometheus does not work on arm64?
 
