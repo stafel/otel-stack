@@ -52,7 +52,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace:  otelo11y-stack #otelo11y-prometheus
+    namespace: otelo11y-prometheus
   
   syncPolicy:
     automated:

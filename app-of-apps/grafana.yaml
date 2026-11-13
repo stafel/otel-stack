@@ -46,7 +46,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace:  otelo11y-stack #otelo11y-grafana
+    namespace: otelo11y-grafana
 
   syncPolicy:
     automated:
