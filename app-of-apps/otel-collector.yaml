@@ -67,7 +67,7 @@ spec:
                 level: normal          # none | basic | normal | detailed
                 readers:
                   - periodic: # this sets the own metrics to push
-                      interval: 60000ms   # push every 60s
+                      interval: 60000   # push every 60s
                       exporter:
                         otlp:
                           protocol: http/protobuf
