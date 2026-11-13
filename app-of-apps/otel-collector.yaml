@@ -15,8 +15,8 @@ spec:
       values: |
         mode: deployment
         replicaCount: 1 # Put replicas down to have easy way to check the log in argo
-        image:
-          repository: "ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib"
+        #image:
+        #  repository: "ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib" # opentelemetry-collector-k8s has no 
         readinessProbe:
           initialDelaySeconds: 3 # default 1 sec is too low
 
@@ -29,8 +29,9 @@ spec:
             otlp_http/tempo:
               endpoint: "otelo11y-tempo.otelo11y-tempo.svc.cluster.local"
 
-            prometheusremotewrite:
-              endpoint: "http://otelo11y-prometheus-server.otelo11y-prometheus.svc.cluster.local/api/v1/write"
+            prometheus_remote_write:
+              http:
+                endpoint: "http://otelo11y-prometheus-server.otelo11y-prometheus.svc.cluster.local/api/v1/write"
 
           extensions:
             # The health_check extension is mandatory for this chart.
@@ -91,7 +92,7 @@ spec:
                   - batch
                 exporters:
                   - debug
-                  - prometheusremotewrite
+                  - prometheus_remote_write
 
               traces:
                 receivers:
