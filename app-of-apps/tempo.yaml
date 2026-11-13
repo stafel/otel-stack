@@ -16,7 +16,7 @@ spec:
         
   destination:
     server: https://kubernetes.default.svc
-    namespace: otelo11y-tempo
+    namespace:  otelo11y-stack #otelo11y-tempo
 
   syncPolicy:
     automated:

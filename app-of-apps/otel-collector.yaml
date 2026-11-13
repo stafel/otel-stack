@@ -108,7 +108,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: otelo11y-otel-collector
+    namespace: otelo11y-stack #otelo11y-otel-collector
   
   syncPolicy:
     automated:
