@@ -13,7 +13,7 @@ spec:
     helm:
       # https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-collector 
       values: |
-        mode: daemonset # to have one on each node to read the logs
+        mode: deployment # daemonset to have one on each node to read the logs
         replicaCount: 1 # Put replicas down to have easy way to check the log in argo
         image:
           repository: "ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib" # opentelemetry-collector-k8s has no 
